@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "SpringbootViaCodeSpaceApplication",
+            "request": "launch",
+            "mainClass": "com.hszindev.springbootviacodespace.SpringbootViaCodeSpaceApplication",
+            "projectName": "springbootviacodespace"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringbootviacodespaceApplication<springbootviacodespace>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.hszindev.springbootviacodespace.SpringbootviacodespaceApplication",
+            "projectName": "springbootviacodespace",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
