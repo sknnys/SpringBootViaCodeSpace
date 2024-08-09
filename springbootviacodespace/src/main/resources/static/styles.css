@@ -1,24 +1,73 @@
+/* styles.css */
+
+/* Estilo para o corpo da página */
 body {
-    background-color: #f8f9fa; /* Light background for the page */
+    background-color: #f4f6f9; /* Cor de fundo suave */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte moderna */
+    color: #495057; /* Cor do texto padrão */
+    transition: background-color 0.3s; /* Transição suave */
 }
 
+/* Estilo para o título principal */
 h1 {
-    color: #007bff; /* Bootstrap primary color */
+    color: #007bff; /* Cor primária do Bootstrap */
+    margin-bottom: 20px;
 }
 
-ul#user-list {
-    list-style-type: none;
-    padding: 0;
+/* Estilo para o container dos cards */
+.card {
+    border-radius: 10px; /* Borda arredondada */
+    transition: box-shadow 0.3s, transform 0.3s; /* Transições suaves */
 }
 
-ul#user-list li {
-    padding: 8px;
-    border: 1px solid #007bff;
-    margin-bottom: 4px;
-    border-radius: 4px;
-    background-color: #ffffff;
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais forte ao passar o mouse */
+    transform: translateY(-5px); /* Levanta a caixa ao passar o mouse */
 }
 
-ul#user-list li:nth-child(odd) {
-    background-color: #e9ecef;
+/* Estilo para o botão de adicionar */
+.btn-primary {
+    background-color: #007bff; /* Cor primária do Bootstrap */
+    border-color: #007bff; /* Cor da borda */
+    transition: background-color 0.3s, border-color 0.3s; /* Transições suaves */
 }
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Cor de hover */
+    border-color: #004085; /* Cor da borda de hover */
+}
+
+/* Estilo para o input de texto */
+#user-name {
+    border-radius: 4px; /* Borda arredondada */
+    border: 1px solid #ced4da; /* Cor da borda */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transições suaves */
+}
+
+#user-name:focus {
+    border-color: #007bff; /* Cor da borda ao focar */
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Sombra ao focar */
+}
+
+/* Estilo para a lista de usuários e removidos */
+.list-group-item {
+    border: 1px solid #dee2e6; /* Cor da borda */
+    border-radius: 4px; /* Borda arredondada */
+    margin-bottom: 5px; /* Espaçamento entre itens */
+    transition: background-color 0.3s, transform 0.3s; /* Transições suaves */
+}
+
+.list-group-item:hover {
+    background-color: #f1f1f1; /* Cor de fundo ao passar o mouse */
+    transform: translateY(-2px); /* Levanta o item ao passar o mouse */
+}
+
+/* Estilo para o botão de remover */
+.btn-danger {
+    margin-left: 10px; /* Espaçamento à esquerda do botão de remover */
+    transition: background-color 0.3s, border-color 0.3s; /* Transições suaves */
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Cor de hover */
+    border-color: #bd2130; /* Cor da borda de
