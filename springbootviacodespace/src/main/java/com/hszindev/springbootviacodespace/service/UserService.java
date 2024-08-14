@@ -17,8 +17,12 @@ public class UserService {
     private UserRepository userRepository;
 
     public ResponseEntity<?> saveUser(User user) {
-        Optional<User> existingUser = userRepository.findByName(user.getName());
+        // Normaliza o nome do usuário para minúsculas
+        String normalizedUserName = user.getName().toLowerCase();
         
+        // Busca o usuário ignorando maiúsculas/minúsculas
+        Optional<User> existingUser = userRepository.findByName(normalizedUserName);
+
         if (existingUser.isPresent()) {
             if (existingUser.get().getActive()) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -30,6 +34,8 @@ public class UserService {
         }
         
         try {
+            // Salva o usuário com o nome normalizado
+            user.setName(normalizedUserName);
             User savedUser = userRepository.save(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
         } catch (Exception e) {
