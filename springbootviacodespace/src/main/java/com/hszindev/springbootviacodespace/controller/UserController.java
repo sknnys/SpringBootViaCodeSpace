@@ -16,13 +16,8 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        try {
-            User savedUser = userService.saveUser(user);
-            return ResponseEntity.ok(savedUser);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(null); // Responde com erro se o nome já existir
-        }
+    public ResponseEntity<?> createUser(@RequestBody User user) {
+        return userService.saveUser(user);
     }
 
     @GetMapping
@@ -31,9 +26,14 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
 
+    @GetMapping("/removed")
+    public ResponseEntity<List<User>> getRemovedUsers() {
+        List<User> removedUsers = userService.getRemovedUsers();
+        return ResponseEntity.ok(removedUsers);
+    }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteUserById(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+        return userService.deleteUserById(id);
     }
 }
