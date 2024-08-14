@@ -13,6 +13,7 @@
     <script>
         let removedUsers = []; // Array para armazenar os usuários removidos
         let removingUserIds = new Set(); // Conjunto para rastrear IDs de usuários que estão sendo removidos
+        let addingUser = false; // Flag para rastrear se um usuário está sendo adicionado
 
         async function fetchUsers() {
             try {
@@ -50,8 +51,15 @@
         }
 
         async function addUser() {
+            if (addingUser) return; // Previne adicionar vários usuários ao mesmo tempo
+
+            addingUser = true; // Marca como usuário sendo adicionado
             const name = document.getElementById('user-name').value;
-            if (!name) return;
+            if (!name) {
+                addingUser = false;
+                return;
+            }
+
             try {
                 const response = await fetch('/api/users', {
                     method: 'POST',
@@ -67,6 +75,8 @@
                 }
             } catch (error) {
                 console.error('Error adding user:', error);
+            } finally {
+                addingUser = false; // Marca como não estando mais em adição
             }
         }
 
