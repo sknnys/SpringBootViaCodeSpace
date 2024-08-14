@@ -3,7 +3,6 @@ package com.hszindev.springbootviacodespace.controller;
 import com.hszindev.springbootviacodespace.model.User;
 import com.hszindev.springbootviacodespace.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,12 +16,12 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@RequestBody User user) {
         try {
             User savedUser = userService.saveUser(user);
             return ResponseEntity.ok(savedUser);
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null); // Responde com erro se o nome já existir
         }
     }
 

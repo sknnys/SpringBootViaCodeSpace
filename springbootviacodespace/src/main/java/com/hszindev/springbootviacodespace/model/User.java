@@ -14,6 +14,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private Boolean active = true;
 
     // Getters e Setters
     public Long getId() {
@@ -31,4 +32,13 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
 }

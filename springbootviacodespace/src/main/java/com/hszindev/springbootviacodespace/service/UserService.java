@@ -17,9 +17,9 @@ public class UserService {
     public User saveUser(User user) {
         Optional<User> existingUser = userRepository.findByName(user.getName());
         if (existingUser.isPresent()) {
-            throw new RuntimeException("User with this name already exists.");
+            throw new RuntimeException("Usuario com esse nome já foi cadastrado.");
         }
-        return userRepository.save(user);
+            return userRepository.save(user);
     }
 
     public List<User> getAllUsers() {
@@ -27,6 +27,11 @@ public class UserService {
     }
 
     public void deleteUserById(Long userId) {
-        userRepository.deleteById(userId);
+        Optional<User> user = userRepository.findById(userId);
+        if(user.isPresent()) {
+            User userToUpdate = user.get();
+            userToUpdate.setActive(false);
+            userRepository.save(userToUpdate);
+        }
     }
 }
